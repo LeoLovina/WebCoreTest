@@ -5,6 +5,7 @@
 - There's no model binding.
 - A view component never handles a request.
 ## 
+- the class name PriorityListViewComponent ends with the suffix ViewComponent, the runtime uses the string PriorityList when referencing the class component from a view.
 
 ## View search path
 - the default view file Default.cshtml
@@ -19,5 +20,6 @@
 </vc:[view-component-name]>
 ```
 
-
+# Ref
+- https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-3.1
 
