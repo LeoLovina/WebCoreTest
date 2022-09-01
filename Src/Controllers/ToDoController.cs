@@ -18,5 +18,11 @@ namespace WebCoreTest.Controllers
             var model = _db.ToDo.ToList();
             return View(model);
         }
+
+        public IActionResult IndexVC()
+        {
+            // call the view component directly from the controller
+            return ViewComponent("PriorityList", new { maxPriority = 3, isDone = false });
+        }
     }
 }

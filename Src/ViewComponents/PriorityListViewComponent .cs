@@ -16,8 +16,13 @@ namespace WebCoreTest.ViewComponents
         // InvokeAsync is called from a view, and it can take an arbitrary number of arguments.
         public async Task<IViewComponentResult> InvokeAsync(int maxPriority, bool isDone)
         {
+            var viewName = "default";
+            if (maxPriority>3)
+            {
+                viewName = "PVC";
+            }
             var items = await GetItemsAsync(maxPriority, isDone);
-            return View(items);
+            return View(viewName, items);
         }
 
         private Task<List<TodoItem>> GetItemsAsync(int maxPriority, bool isDone)
