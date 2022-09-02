@@ -4,10 +4,31 @@ namespace WebCoreTest.TagHelpers
 {
 	public class EmailTagHelper : TagHelper
 	{
-		public override void Process(TagHelperContext context, TagHelperOutput output)
+        private const string EmailDomain = "contoso.com";
+
+        // Can be passed via <email mail-to="..." />. 
+        // PascalCase(MailTo) gets translated into kebab-case(mail-to).
+        public string MailTo { get; set; }
+        public string CCTo { get; set; }
+
+        public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
-			output.TagName = "a";
-			//base.Process(context, output);
-		}
+            // Replaces <email> with <a> tag
+            output.TagName = "a";
+
+            foreach (var att in output.Attributes)
+            {
+                var a = att;
+            }
+
+            var address = MailTo + "@" + EmailDomain;
+            // if href exists on html, then update it.
+            output.Attributes.SetAttribute("href", "mailto:" + address);
+
+            // if class exists on html, then it would not add this attribute
+            output.Attributes.Add("class", "updateFromTagHelper");
+            output.Content.SetContent(address);
+            //base.Process(context, output);
+        }
 	}
 }
