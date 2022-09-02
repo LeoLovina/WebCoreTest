@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace WebCoreTest.TagHelpers
 {
-	public class EmailTagHelper : TagHelper
+
+    public class EmailTagHelper : TagHelper
 	{
         private const string EmailDomain = "contoso.com";
 
@@ -11,23 +13,23 @@ namespace WebCoreTest.TagHelpers
         public string MailTo { get; set; }
         public string CCTo { get; set; }
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-		{
+        //public override void Process(TagHelperContext context, TagHelperOutput output)
+        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        {
             // Replaces <email> with <a> tag
             output.TagName = "a";
-
-            foreach (var att in output.Attributes)
-            {
-                var a = att;
-            }
+            var content = await output.GetChildContentAsync();
+            var target = content.GetContent();
 
             var address = MailTo + "@" + EmailDomain;
+
             // if href exists on html, then update it.
             output.Attributes.SetAttribute("href", "mailto:" + address);
 
             // if class exists on html, then it would not add this attribute
             output.Attributes.Add("class", "updateFromTagHelper");
-            output.Content.SetContent(address);
+
+            output.Content.SetContent(target);
             //base.Process(context, output);
         }
 	}
