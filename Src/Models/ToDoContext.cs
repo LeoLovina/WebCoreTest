@@ -9,6 +9,7 @@ namespace WebCoreTest.Models
 
         }
         public DbSet<TodoItem>? ToDo { get; set; }
+        public DbSet<WebInfo>? Info { get; set; }
 
         //The below is used to seeding the DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +25,16 @@ namespace WebCoreTest.Models
                         Priority = i % 5 + 1
                     });
             }
+
+            modelBuilder.Entity<WebInfo>().HasData(
+                    new WebInfo
+                    {
+                        Id = 1,
+                        Version = "0.03",
+                        CopyrightYear = 1638,
+                        Approved = true,
+                        TagsToShow = 131
+                    }) ;
         }
     }
 }

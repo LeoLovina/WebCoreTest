@@ -30,7 +30,6 @@ namespace WebCoreTest.TagHelpers
             output.Attributes.Add("class", "updateFromTagHelper");
 
             output.Content.SetContent(target);
-            //base.Process(context, output);
         }
 	}
 }
