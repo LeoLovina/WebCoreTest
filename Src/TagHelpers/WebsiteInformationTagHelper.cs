@@ -5,6 +5,9 @@ namespace WebCoreTest.TagHelpers
 {
     // kebab case
     // <<website-information info="webInfo" />
+    /// <summary>
+    /// Razor knows the info attribute is a class, not a string, and you want to write C# code. Any non-string tag helper attribute should be written without the @ character.
+    /// </summary>
     public class WebsiteInformationTagHelper : TagHelper
     {
         // define an attribute 

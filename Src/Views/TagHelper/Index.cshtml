@@ -3,10 +3,18 @@
 	ViewData["Title"] = "TagHelper";
 }
 
-<h4>TagHelper: email tag with attributes mail-to and cc</h4>
+<h4>email tag with attributes mail-to and cc</h4>
 <email mail-to="leo.lovina" cc-to="cc" class="newclass"> Marketing</email>
-<h4>TagHelper: PreContent.SetHtmlContent and PostContent.SetHtmlContent</h4>
+<h4>PreContent.SetHtmlContent and PostContent.SetHtmlContent</h4>
 <p bold='y' class="myClass">Use this area to provide additional information.</p>
 <bold> Is this bold?</bold>
-<h4>TagHelper: Pass a model to a Tag Helper</h4>
+<h4>Pass a model to a Tag Helper</h4>
 <website-information info="Model" />
+<h4>Condition Tag Helper</h4>
+
+<div condition="false">
+	<p>
+		This website has <strong surround="em">@Model.Approved</strong> been approved yet.
+		Visit www.contoso.com for more information.
+	</p>
+</div>
