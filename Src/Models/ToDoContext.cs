@@ -10,6 +10,7 @@ namespace WebCoreTest.Models
         }
         public DbSet<TodoItem>? ToDo { get; set; }
         public DbSet<WebInfo>? Info { get; set; }
+        public DbSet<VersionInfo> VersionInfo { get; set; }
 
         //The below is used to seeding the DB
         protected override void OnModelCreating(ModelBuilder modelBuilder)
